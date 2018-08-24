@@ -3,14 +3,14 @@ import numpy as np
 import json
 import itertools
 import copy
-from tqdm import tqdm_notebook
+from tqdm import tqdm
 
 np.set_printoptions(threshold=np.inf)
 
 board = list(itertools.product(range(2),repeat=12))
 board = sorted(board)
 
-matches = [ ['M17', 'f'],
+matches = [ ['M17', 'JT'],
             ['M17', 'FW'],
             ['M17', 'HKA'],
             ['AFR', 'HKA'],
@@ -58,9 +58,9 @@ def get_index(i):
 array = np.arange(4096).reshape(64,64)
 
 
-pbar = tqdm_notebook(total=4096,leave=False)
+pbar = tqdm(total=4096,leave=False)
 
-for k in range(40):
+for k in range(4096):
     win_list= []
     lose_list = []
 
@@ -229,5 +229,4 @@ hm = sns.heatmap(array, vmin = -1, vmax = 4, center=2,
                 cmap =sns.xkcd_palette(colors), cbar = False,
                 xticklabels = False, yticklabels = False, robust=False)
 
-fig = hm.get_figure()
-fig.savefig('M17.png')
+plt.show(block=False)
