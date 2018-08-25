@@ -1,11 +1,13 @@
+#%%
 import pandas as pd
 import numpy as np
 import json
 import itertools
 import copy
-from tqdm import tqdm
+from tqdm import tqdm_notebook
 
 np.set_printoptions(threshold=np.inf)
+
 
 board = list(itertools.product(range(2),repeat=12))
 board = sorted(board)
@@ -58,9 +60,9 @@ def get_index(i):
 array = np.arange(4096).reshape(64,64)
 
 
-pbar = tqdm(total=4096,leave=False)
+pbar = tqdm_notebook(total=4096,leave=False)
 
-for k in range(4096):
+for k in range(40):
     win_list= []
     lose_list = []
 
