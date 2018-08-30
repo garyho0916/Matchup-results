@@ -40,6 +40,9 @@ matches_list = [['AFR', 'HKA'],['GREX', 'MAD'],['JT', 'M17'],['AHQ', 'AFR'],
                 ['HKA', 'MAD'],['M17', 'FW'],['FW', 'JT'],['AHQ', 'GREX'],
                 ['JT', 'AFR'],['HKA', 'M17'],['AHQ', 'MAD'],['GREX', 'FW']]
 
+#build up a 64*64 zero-matrix
+score_array = np.zeros_like(np.arange(4096).reshape(64,64))
+
 # We need to know which match the first index of WL_list represent,
 # so that we can add the score in the right position on the score list
 # Generally I pull the focus_team to the front of matches list with same order
@@ -80,9 +83,6 @@ def find_win_lose(matches_index, scenario):
     win_team = matches_list[matches_index][win_side]
     lose_team = matches_list[matches_index][lose_side]
     return win_team, lose_team
-
-#build up a 64*64 zero-matrix
-score_array = np.zeros_like(np.arange(4096).reshape(64,64))
 
 def tie_winner(tie_team, focus_team):
     if len(tie_team) == 1:
