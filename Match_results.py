@@ -161,7 +161,7 @@ for scenario in scenario_list:
         matchup_table21[lose_team][win_team][0] +=1
         matchup_table21[lose_team][win_team][1] +=2
 
-    # We sent the score to dataframe to use rank function sorting team
+    # We sent the score to dataframe to use rank function to get the team rank
     team_score_df = pd.DataFrame.from_dict(data = team_score_list_cp, orient ='index',
                                             columns = ['W','L','TW20','TL20','TW21','TL21'])
     team_score_df = team_score_df.sort_values(by=['W','TW20'], ascending=False)
@@ -186,7 +186,7 @@ for scenario in scenario_list:
     coordinate = get_index(scenario)
     score_array[coordinate[0]][coordinate[1]] = state
     bar.update(scenario_list.index(scenario))
-bar.finish
+bar.finish()
 
 import seaborn as sns
 import matplotlib.pyplot as plt
